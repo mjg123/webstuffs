@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title>KING OF TOKYO</title>
+    <link rel="stylesheet" type="text/css" href="kot.css"/>
+  </head>
+  <body>
+
+    <h1>dice</h1>
+    <p>This simulates one standard turn's dice rolls for KOT.<p>
+
+      <div id="gamearea">
+        <div id="dices" class="dice-area">
+          <div id="roll-button" class="can-roll">
+            ROLL
+          </div>
+
+          <div class="die-container" id="die0">
+            <div class="die2" id="die0face">1</div>
+            <div class="hold-msg">HOLDING</div>
+            <div class="held-msg">HELD</div>
+          </div>
+
+          <div class="die-container" id="die1">
+            <div class="die2" id="die1face">1</div>
+            <div class="hold-msg">HOLDING</div>
+            <div class="held-msg">HELD</div>
+          </div>
+
+          <div class="die-container" id="die2">
+            <div class="die2" id="die2face">1</div>
+            <div class="hold-msg">HOLDING</div>
+            <div class="held-msg">HELD</div>
+          </div>
+
+          <div class="die-container" id="die3">
+            <div class="die2" id="die3face">2</div>
+            <div class="hold-msg">HOLDING</div>
+            <div class="held-msg">HELD</div>
+          </div>
+
+          <div class="die-container" id="die4">
+            <div class="die2" id="die4face">3</div>
+            <div class="hold-msg">HOLDING</div>
+            <div class="held-msg">HELD</div>
+          </div>
+
+          <div class="die-container" id="die5">
+            <div class="die2" id="die5face">3</div>
+            <div class="hold-msg">HOLDING</div>
+            <div class="held-msg">HELD</div>
+          </div>
+
+        </div>
+
+        <div style="clear: both"></div>
+
+        <div id="dice-msg">Hello buddy!</div>
+
+      </div>
+
+
+    <p id="result">
+      The final roll was <span id="roll-result"></span>.
+      <span id="reset-link">Click here to go again</span>.
+    </p>
+
+    <script type="text/javascript" src="js/g.pubsub.js"></script>
+    <script type="text/javascript" src="js/dice.js"></script>
+  </body>
+</html>
