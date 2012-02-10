@@ -48,6 +48,7 @@
             s = new Date().getTime();
           }
         };
+        window.ontouchstart = window.onmousedown;
 
         window.onmouseup   = function(e){
           if (e.target === p){
@@ -58,9 +59,9 @@
             } else {
                 doSpin();
             }
-          }
-           
+          }           
         };
+        window.ontouchend = window.onmouseup;
 
         doSpin = function(){
           spin = spin + (flipped ? -1 : 1);
