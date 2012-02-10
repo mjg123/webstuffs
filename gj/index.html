@@ -87,7 +87,11 @@
       <div id="dead">You DEAD</div>
     </div>
 
+    <script type="text/javascript" src="../lib/g.analytics.js"></script>
+
     <script type="text/javascript">
+
+      ANALYTICS.event("goosejump-dom", {event: "loaded"});
 
       var msecPerFrame = 30,
       g=document.getElementById("goose"),
@@ -209,6 +213,7 @@
           document.getElementById("bestscore").innerHTML=t;
           bestScore = t;
         }
+        ANALYTICS.event("goosejump-dom", {event: "yrdead", score: t});
       },
       reset = function(){
         for (i=0; i<blocks.length; i++){
