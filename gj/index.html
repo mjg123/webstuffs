@@ -76,7 +76,7 @@
     
     <h1>goosejump!</h1>
 
-    <p>The dom version.  p/l to jump/duck, r to restart.</p>
+    <p>The dom version.  p/l to jump/duck.  Also click/touch to jump (no ducking on the phone though). r to restart.</p>
     <p>Last score: <span id="lastscore">mu</span>.  Best score: <span id="bestscore">mu</span>.</p>
 
 
@@ -167,6 +167,7 @@
           jumping = true;
           ducking = false;
           dy = 10;
+          console.log("HONK!");
 	}
 
         if ( shouldDuck && !jumping ){
@@ -238,6 +239,9 @@
           shouldDuck = false;
         }
       }
+
+      window.ontouchstart = window.onmousedown = function(){ shouldJump=true; }
+      window.ontouchend = window.onmouseup = function(){ shouldJump=false; }
 
       var timer = setInterval(draw, msecPerFrame);
 
