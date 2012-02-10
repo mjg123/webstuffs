@@ -9,7 +9,7 @@
         line-height: 2em;
         width: 2em;
         text-align: center;
-        border: 1px solid teal;
+        border: 2px solid teal;
         border-radius: 0.5em;
         margin: 1em;
         box-shadow: 0 0 0.5em 0 teal;
@@ -19,6 +19,7 @@
         -webkit-touch-callout: none;
         -webkit-user-select: none;
 
+        /* to do a bit of spinning */
         -webkit-transition-property: -webkit-transform;
         -webkit-transition-duration: 0.5s;
       }
@@ -40,6 +41,7 @@
       (function(d){
       
         var p = d.getElementById("piece"),
+            clickTimeout,
             s, spin=0, doSpin,
             flipped=false, doFlip,
             flipThres = 400;
@@ -47,23 +49,26 @@
         window.onmousedown = function(e){
           if (e.target === p){
             s = new Date().getTime();
+            clickTimeout = setTimeout(doFlip, flipThres);
           }
           e.preventDefault();
         };
-        window.ontouchstart = window.onmousedown;
 
-        window.onmouseup   = function(e){
+
+        window.onmouseup = function(e){
           if (e.target === p){
             var dur = new Date().getTime() - s;
 
-            if (dur > flipThres){
-                doFlip();
-            } else {
+            if (dur <= flipThres){
+		clearTimeout(clickTimeout);
                 doSpin();
             }
           }          
           e.preventDefault();
         };
+
+
+        window.ontouchstart = window.onmousedown;
         window.ontouchend = window.onmouseup;
 
         doSpin = function(){
