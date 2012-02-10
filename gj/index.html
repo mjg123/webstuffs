@@ -40,6 +40,7 @@
         border-radius: 4px;
       }
       #dead {
+        z-index: 10;
         font-family: Sans-serif;
         font-weight: bold;
         position: absolute;
@@ -53,6 +54,13 @@
         text-align: center;
         font-size: 200%;
         display: none;
+      }
+      .cloud {
+        z-index: 0;
+        position: absolute;
+        background-color: #FFF;
+        border-radius: 4px;
+        box-shadow: 0 0 100px 20px #FFF;
       }
       .block {
         z-index: 1;
@@ -81,11 +89,13 @@
 
     <script type="text/javascript">
 
-      var g=document.getElementById("goose"),
+      var msecPerFrame = 30,
+      g=document.getElementById("goose"),
       score=document.getElementById("score"),
       dude=document.getElementById("dude"),
-      timer, bestScore=0;
-      t=0, blocks=[], speed=5, 
+      timer, bestScore=0,
+      clouds = [],
+      t=0, blocks=[], speed=msecPerFrame*0.2, 
       y=0, dy=0,
       shouldJump=shouldDuck=false,
       jumping=ducking=false,
@@ -103,6 +113,19 @@
         g.appendChild(d);
         return d;
       },
+      createCloud = function(){
+        var d = document.createElement("div");
+        d.className="cloud";
+        d.lefty=640;
+        d.style.left = d.lefty;
+        d.style.top = Math.random() * 200;
+        d.widthy = Math.random() * 200 + 50;
+        d.style.width = d.widthy;
+        d.style.height = Math.random() * 25 + 50;
+        d.speedy = Math.random() * 3;
+        g.appendChild(d);
+        return d;
+      },
       draw = function(){
         t++;
 
@@ -115,14 +138,30 @@
         if (Math.random()*36 < 1){
           blocks.push(createBlock());
         }
+        if (Math.random()*200 < 1){
+          clouds.push(createCloud());
+	}
+
         for (i=0; i<blocks.length; i++){
           blocks[i].lefty -= speed;
           blocks[i].style.left = blocks[i].lefty + "px";
 	}
-        if ( blocks[0].lefty < -16 ){
+        if ( blocks[0] && blocks[0].lefty < -16 ){
           g.removeChild(blocks[0]);
           blocks = blocks.slice(1);
         }
+
+        for (i=0; i<clouds.length; i++){
+          if (clouds[i] !== null){
+            clouds[i].lefty -= clouds[i].speedy;
+            if ( clouds[i].lefty < -1 * clouds[i].widthy ){
+              g.removeChild(clouds[i]);
+              clouds[i] = null;
+            } else {
+              clouds[i].style.left = clouds[i].lefty + "px";
+            }
+	  }
+	}
 
         if ( shouldJump && !jumping ){
           jumping = true;
@@ -177,7 +216,7 @@
         blocks = [];
         t=0;
         clearInterval(timer);
-        timer = setInterval(draw, 25);
+        timer = setInterval(draw, msecPerFrame);
         document.getElementById("dead").style.display = "none";
       };
 
@@ -200,7 +239,7 @@
         }
       }
 
-      var timer = setInterval(draw, 25);
+      var timer = setInterval(draw, msecPerFrame);
 
     </script>
   </body>
