@@ -30,7 +30,7 @@
     <h1>BLOK</h1>
 
     <p>Wherein I make a block that can spin, flip and drag.</p>
-    <p>click to rotate, hold to flip.</p>
+    <p>Tap to rotate, long-tap to flip.</p>
 
     <div id="piece">&#24038;</div>
 
@@ -47,6 +47,7 @@
           if (e.target === p){
             s = new Date().getTime();
           }
+          e.preventDefault();
         };
         window.ontouchstart = window.onmousedown;
 
@@ -59,7 +60,8 @@
             } else {
                 doSpin();
             }
-          }           
+          }          
+          e.preventDefault();
         };
         window.ontouchend = window.onmouseup;
 
