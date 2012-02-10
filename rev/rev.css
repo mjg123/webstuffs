@@ -1,0 +1,60 @@
+#reset {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #432;
+}
+
+#gamearea {
+    background: #432;
+    display: inline-block;
+    padding: 2em;
+    margin: 3em;
+    box-shadow: 0 0 3em 0 #888;
+    border-radius: 1em;
+}
+
+#board {
+    background-color: #070;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    box-shadow: 0 0 1em 0 #000;
+}
+
+#playarea {
+    border: 1px solid #040;
+}
+
+.row {
+    display: block;
+    clear: both;
+}
+
+.cell {
+    font-size: 250%;
+    float: left;
+    width: 0.8em;
+    height: 0.8em;
+    line-height: 0.8em;
+    text-align: center;
+    border: 1px solid #040;
+    cursor: pointer;
+    color: rgba(0,0,0,0);
+}
+
+.white { color: #FFF; text-shadow: #FFF 0 0 3px; }
+.black { color: #000; text-shadow: #000 0 0 3px; }
+
+.clear {
+    clear: both;
+}
+
+#msg {
+    font-size: 150%;
+    margin-top: 1em;
+    margin-bottom: -0.5em;
+    text-align: center;
+    color: #AAA;
+    font-weight: bold;
+    text-shadow: #000 0 0 5px;
+    vertical-align: center;
+}
