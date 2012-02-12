@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>carc card picker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style type="text/css">
+      body { font-family: Sans-serif; text-align: center; }
+      #card { font-size: 600%; }
+      #numcards { width: 3em; border: 1px solid black; text-align: center; }
+    </style>
+  </head>
+  <body>
+
+    <h1 id="card">--</h1>
+
+    You have <input id="numcards" value="10"/> cards remaining.
+
+    <script type="text/javascript">
+      var c=document.getElementById("card");
+      var n=document.getElementById("numcards");
+      c.onclick = c.ontouchstart = function(e){
+        var ran = Math.random() * n.value;
+        console.log(ran);
+        var r = Math.floor(ran)+1;
+        c.innerHTML = r;
+        n.value = n.value-1;
+        e.preventDefault();
+      }
+
+    </script>
+  </body>
+</html>
