@@ -48,7 +48,7 @@ var DBL = (function(d){
 
     init = function(){
 	var i;
-	for (i=0; i<100; i+=1){
+	for (i=0; i<10; i+=1){
 	    blocks.push({xf:Math.random(), yf:Math.random()});
 	}
     },
